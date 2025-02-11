@@ -1,3 +1,5 @@
+import chalk from 'chalk'
+
 function extraiLinks (arrLinks) {
   return arrLinks.map((objetoLink) => Object.values(objetoLink).join())
 }
@@ -36,7 +38,7 @@ function manejaErros (erro) {
       break;
   };
 
-  return msgErro;
+  return chalk.red(msgErro);
 }
 
 export default async function listaValidada (listaDeLinks) {
