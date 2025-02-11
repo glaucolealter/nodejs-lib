@@ -1,5 +1,3 @@
-import chalk from "chalk";
-
 function extraiLinks (arrLinks) {
   return arrLinks.map((objetoLink) => Object.values(objetoLink).join())
 }
@@ -20,11 +18,25 @@ async function checaStatus (listaURLs) {
 }
 
 function manejaErros (erro) {
-  if (erro.cause.code === 'ENOTFOUND') {
-    return 'link não encontrado';
-  } else {
-    return 'ocorreu algum erro';
-  }
+
+  let msgErro = '';
+
+  switch (erro.cause.code) {
+    case 'ENOTFOUND':
+      msgErro = 'link não encontrado';
+      break;
+    case 'ECONNREFUSED':
+      msgErro = 'conexão com o servidor falhou';
+      break;
+    case 'ETIMEDOUT':
+      msgErro = 'servidor demorou muito para responder';
+      break;
+    default:
+      msgErro = 'ocorreu algum erro';
+      break;
+  };
+
+  return msgErro;
 }
 
 export default async function listaValidada (listaDeLinks) {

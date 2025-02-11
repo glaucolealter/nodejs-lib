@@ -10,6 +10,7 @@ async function imprimeLista(valida, resultado, identificador = '') {
     console.log(
       chalk.yellow('lista validada'),
       chalk.black.bgGreen(identificador),
+      //await listaValidada(util.inspect(resultado.links, {colors:true})),
       await listaValidada(resultado.links),
       chalk.black.bgGreen('total de links: ' + resultado.total)
     );    
@@ -18,7 +19,7 @@ async function imprimeLista(valida, resultado, identificador = '') {
       chalk.yellow('lista de links'),
       chalk.black.bgGreen(identificador),
       resultado.links,
-      chalk.black.bgGreen('total de links' + resultado.total)
+      chalk.black.bgGreen('total de links: ' + resultado.total)
     );
   }
 }
